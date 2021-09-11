@@ -73,7 +73,7 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type="circle" bg={true} 
         />
-        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} route={this.state.route}/>
         { this.state.route === 'Home' 
         ? <div>
           <Logo />
