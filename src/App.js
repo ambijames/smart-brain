@@ -11,7 +11,7 @@ import './App.css';
 import ParticlesBg from 'particles-bg';
 
 const app = new Clarifai.App({
-  apiKey: ''
+  apiKey: 'd85fc0c9bfb5497cb98c030aba63ae03'
  });
 
 class App extends Component {
@@ -25,6 +25,12 @@ class App extends Component {
       isSignedIn: false
     }
   }
+
+	componentDidMount() {
+		fetch('http://localhost:5000')
+		.then(response => response.json())
+		.then(console.log)
+	}
 
 
   calculateFaceLocation = (data) => {
@@ -62,7 +68,7 @@ class App extends Component {
   onRouteChange = (route) => {
     if (route === 'SignOut') {
       this.setState({isSignedIn: false})
-    } else if (route === 'Home') {
+    } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
     this.setState({route: route});
@@ -74,7 +80,7 @@ class App extends Component {
         <ParticlesBg type="circle" bg={true} 
         />
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} route={this.state.route}/>
-        { this.state.route === 'Home' 
+        { this.state.route === 'home' 
         ? <div>
           <Logo />
           <Rank />
